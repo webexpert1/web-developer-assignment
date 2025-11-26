@@ -10,7 +10,7 @@ export const getUsersCount = (): Promise<number> =>
   new Promise((resolve, reject) => {
     connection.get<{ count: number }>(
       selectCountOfUsersTemplate,
-      (error, results) => {
+      (error: Error | null, results: { count: number }) => {
         if (error) {
           reject(error);
         }
@@ -27,7 +27,7 @@ export const getUsers = (
     connection.all<User>(
       selectUsersTemplate,
       [pageNumber * pageSize, pageSize],
-      (error, results) => {
+      (error: Error | null, results: User[]) => {
         if (error) {
           reject(error);
         }
