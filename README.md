@@ -188,9 +188,9 @@ Delete a post by ID
 
 ## 🧪 Testing
 
-### Backend Tests
+### Frontend Tests
 ```bash
-cd backend
+cd frontend
 npm test
 ```
 
