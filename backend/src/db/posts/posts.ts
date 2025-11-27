@@ -1,6 +1,7 @@
 import { connection } from "../connection";
 import { selectPostsTemplate, insertPostTemplate, deletePostTemplate } from "./query-tamplates";
 import { Post } from "./types";
+import { randomUUID } from "crypto";
 
 /**
  * Retrieves all posts associated with a specific user ID.
@@ -33,7 +34,7 @@ export const getPosts = (userId: string): Promise<Post[]> =>
 export const createPost = (userId: string, title: string, body: string): Promise<Post> =>
   new Promise((resolve, reject) => {
     try {
-      const id = crypto.randomUUID();
+      const id = randomUUID();
       const createdAt = new Date().toISOString();
 
       connection.run(

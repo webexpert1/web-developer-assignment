@@ -54,7 +54,7 @@ A full-stack web application for managing users and their posts, built with Reac
 
 ## 📋 Prerequisites
 
-- **Node.js** (v18 or higher)
+- **Node.js** (v18.14.0 or higher - recommended: 18.14.0 for Jest compatibility)
 - **npm** or **yarn**
 - **Git**
 
