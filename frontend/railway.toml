@@ -1,0 +1,4 @@
+# Railway configuration for Frontend React App
+# This file should be in the frontend/ directory for frontend deployment
+
+[build]

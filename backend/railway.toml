@@ -1,0 +1,18 @@
+# Railway configuration for Backend API
+# This file should be in the backend/ directory for backend deployment
+# For frontend deployment, create a separate Railway project
+
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/users"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+
+[build.env]
+NODE_ENV = "production"
+
+[deploy.env]
+NODE_ENV = "production"

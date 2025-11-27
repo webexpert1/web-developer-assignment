@@ -271,10 +271,44 @@ npx serve dist -p 3000
 ### Code Repository
 github - **https://github.com/webexpert1/web-developer-assignment**
 
-### Cloud Deployment
+### Railway Deployment
 
-backend - **web-developer-assignment-production.up.railway.app**
-frontend - **https://web-developer-assignment-five.vercel.app/** */
+#### Important: Create Separate Projects
+
+Since you have both frontend and backend in the same repository, create **2 separate Railway projects**:
+
+#### 1. Backend API Project
+1. Create a new Railway project
+2. Connect your GitHub repository: `webexpert1/web-developer-assignment`
+3. Set **Root Directory** to `backend/`
+4. Railway will use the `backend/railway.toml` configuration
+5. **Environment Variables:**
+   ```
+   NODE_ENV=production
+   ```
+
+#### 2. Frontend React Project
+1. Create **another** Railway project
+2. Connect the **same** GitHub repository: `webexpert1/web-developer-assignment`
+3. Set **Root Directory** to `frontend/`
+4. Railway will use the `frontend/railway.toml` configuration
+5. **Environment Variables:**
+   ```
+   VITE_API_BASE_URL=https://your-backend-project-name.up.railway.app
+   ```
+
+#### Finding Your URLs
+
+**Backend URL:**
+- Go to Backend project → Settings → Domains
+- Copy the URL (e.g., `https://your-backend.up.railway.app`)
+
+**Frontend URL:**
+- Go to Frontend project → Settings → Domains
+- Copy the URL (e.g., `https://your-frontend.up.railway.app`)
+
+#### Database
+Railway automatically provides persistent SQLite storage that survives deployments.
 
 
 ## 🤝 Usage
