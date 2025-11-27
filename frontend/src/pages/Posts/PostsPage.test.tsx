@@ -12,24 +12,6 @@ jest.mock('../../api/users', () => ({
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
-// Create a wrapper component with React Query
-const createWrapper = () => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-      },
-    },
-  });
-
-  return ({ children }: { children: React.ReactNode }) => (
-    <QueryClientProvider client={queryClient}>
-      <MemoryRouter>
-        {children}
-      </MemoryRouter>
-    </QueryClientProvider>
-  );
-};
 
 describe('PostsPage Component', () => {
   beforeEach(() => {
