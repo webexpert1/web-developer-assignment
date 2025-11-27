@@ -1,111 +1,297 @@
-# Web Developer Assignment
+# User-Posts Management System
 
-This full-stack assignment involves building a user management system where developers must extend a Node.js/SQLite backend for user and post operations, and create a React/TypeScript frontend that displays user data in a paginated table and allows for post management, all while following provided design specifications.
+A full-stack web application for managing users and their posts, built with React, Node.js, TypeScript, and SQLite.
 
+## 📋 Table of Contents
 
-## Backend
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Database Setup](#database-setup)
+- [Running the Application](#running-the-application)
+- [API Documentation](#api-documentation)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Deployment](#deployment)
 
-### Provided Backend
+## ✨ Features
 
-A Node server written in TypeScript is provided.
-The server utilizes an SQLite database (data.db) containing all relevant data, including users posts and addresses.
-The server exposes several partial RESTful API endpoints:
+### Frontend
+- **User Management**: Paginated user list with detailed information
+- **Posts Management**: CRUD operations for user posts
+- **Responsive Design**: Mobile-friendly interface with Tailwind CSS
+- **Real-time Updates**: React Query for efficient data fetching and caching
+- **Navigation**: Seamless routing between users and posts pages
+- **Loading States**: Visual feedback during API operations
+- **Error Handling**: Comprehensive error boundaries and user feedback
 
-User Endpoints:
-- `GET /users` -  Returns a list of users with pagination support. (e.g., /users?pageNumber=0&pageSize=10).
-- `GET /users/count` - Returns the total number of users.
-Post Endpoint:
-- `GET /posts` - Returns posts filtered by a specific user ID, using the userId query parameter (e.g., /posts?userId={userId}).
+### Backend
+- **RESTful API**: Complete REST API for users and posts
+- **Data Validation**: Input validation and sanitization
+- **Error Handling**: Proper HTTP status codes and error messages
+- **Database Integration**: SQLite database with proper schema
+- **Unit Tests**: Comprehensive test coverage for API endpoints
 
-### Backend Requirements
+## 🛠 Tech Stack
 
-You are required to implement the following backend functionalities:
+### Frontend
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling framework
+- **React Router** - Client-side routing
+- **React Query** - Data fetching and state management
+- **Lucide React** - Icon library
 
-- **Address to User**
-  - Extend the existing user-related endpoints to include address (metadata associated with the user).
-  - Query the address from the database and include them in the user response.
-  - Ensure the address are properly validated and formatted before returning to the frontend.
-- **Post Deletion**
-  - Create an endpoint to delete a post by its ID.
-  - Remove the post from the database upon successful deletion.
-  - Return appropriate HTTP status codes and messages.
-- **Add a New Post**
-  - Create an endpoint to add a new post for a user, accepting **Title**, **Body**, and **User ID**.
-  - Validate input data and handle errors.
-  - Save the new post to the database upon success.
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **TypeScript** - Type safety
+- **SQLite3** - Database
+- **Jest** - Testing framework
+- **Supertest** - API testing
 
-## Front-End
+## 📋 Prerequisites
 
-### General Requirements
+- **Node.js** (v18 or higher)
+- **npm** or **yarn**
+- **Git**
 
-- Implement the web UI using **TypeScript**, **React**, **React Query**, and **Tailwind CSS**.
-- Follow the **Tailwind** and **shadcn/ui** design tokens (defined in Figma) for consistent styling.
-- Follow the **Figma design** provided in the Resources section.
-- Ensure **graceful handling of API errors** or unexpected data from the backend.
-- Components and pages should have **error and loading states**.
-- Emphasize **code reusability** and **separation of concerns** in your components.
+## 🚀 Installation
 
-### Users Table
+### 1. Clone the Repository
+```bash
+git clone <your-repo-url>
+cd test-frontend-web-developer-assignment-Public
+```
 
-- Set up an internal API that fetches a list of users from your backend API, using the pagination.
-- Display the users in an organized table with the following features:
-  - **Pagination**: Show 4 users per page.
-  - **User Details**:
-    - Full Name
-    - Email Address
-    - Address formatted as "street, state, city, zipcode". Keep the address column at 392px width and use ellipsis (...) for any overflow.
+### 2. Install Backend Dependencies
+```bash
+cd backend
+npm install
+```
 
-### User Posts
+### 3. Install Frontend Dependencies
+```bash
+cd ../frontend
+npm install
+```
 
-- When clicking on a user row, navigate to a new page that displays a list of the user's posts.
-- Fetch the user's posts from your backend API.
-- The page should include:
-  - A header with a summary of the user and the number of posts.
-  - A list of all posts (**no pagination required**).
-  - Each post should display:
-    - **Title**
-    - **Body**
-    - A **Delete** icon.
-      - Clicking the Delete icon should delete the post via your backend API and update the UI accordingly.
-  - An option to **add a new post**:
-    - Include a button that opens a form to create a new post with **Title** and **Body** fields.
-    - Upon submission, the new post should be saved via your backend API and appear in the list of posts without requiring a page refresh.
-- Ensure the design is intuitive and posts are easily readable by closely following the provided Figma design.
+## 🗄️ Database Setup
 
-## Guidelines
+The application uses SQLite database. The database file is automatically created when you run the backend server.
 
-1. **State Management with React Query**
-   - Use React Query to manage server state.
-   - Ensure efficient data fetching, caching, and synchronization with the backend.
-   - Utilize React Query's features to handle loading and error states.
-2. **Code Reusability and Separation**
-   - Structure your components to promote reusability and maintainability.
-   - Abstract shared logic into custom hooks or utility functions where appropriate.
-   - Follow best practices for component composition and props management.
-3. **Responsiveness**
-   - Ensure the application is responsive and functions well on various screen sizes and devices.
-   - Use Tailwind CSS utilities to create responsive layouts.
-4. **Error Handling**
-   - Implement robust error handling for API requests and unexpected data.
-   - Provide meaningful feedback to the user in case of errors.
-   - Use try-catch blocks and handle promise rejections appropriately in your backend.
+### Database Schema
 
-## Resources
+**Users Table:**
+- `id` (TEXT PRIMARY KEY) - Unique user identifier
+- `name` (TEXT NOT NULL) - User's full name
+- `username` (TEXT NOT NULL) - User's username
+- `email` (TEXT NOT NULL) - User's email address
+- `phone` (TEXT NOT NULL) - User's phone number
+- `street` (TEXT) - Street address
+- `city` (TEXT) - City
+- `state` (TEXT) - State/Province
+- `zipcode` (TEXT) - ZIP/Postal code
 
-- **Backend Server**: A partially implemented Node server in TypeScript will be provided. You are expected to complete the specified backend functionalities.
-- **SQLite Database**: The backend uses the `data.db` SQLite database, which contains all necessary data.
-- **Figma Design**: Follow the design specifications outlined in the provided Figma file.
-  [Figma Design for Web UI](https://www.figma.com/design/Wkbz27sGWBOFMDocOck4mm/Full-Stack-Developer-Assignment?node-id=0-1&node-type=canvas&t=zK4X8qKaPmxu84XZ-0)
+**Posts Table:**
+- `id` (TEXT PRIMARY KEY) - Unique post identifier
+- `user_id` (TEXT NOT NULL) - Reference to user
+- `title` (TEXT NOT NULL) - Post title
+- `body` (TEXT NOT NULL) - Post content
+- `created_at` (TEXT NOT NULL) - Creation timestamp
+- Foreign key constraint: `user_id` references `users(id)`
 
-## Deliverables
+### Database Initialization
 
-- A full-stack application that meets the above requirements.
-- Source code organized and documented for readability.
-- Completed backend functionalities as specified.
-- At least one unit test demonstrating testing of a component or functionality.
-- Instructions on how to run the application locally, including setting up the backend and frontend.
+The database and tables are automatically created when the backend server starts. Sample data is pre-populated for demonstration purposes.
 
-## Submission Instructions
+## 🏃‍♂️ Running the Application
 
-- **Code Repository**: Provide access to your code via a Git repository (e.g., GitHub, GitLab).
-- **Readme File**: Include a `README.md` file with instructions on how to install dependencies, set up the database, run migrations (if any), and start both the backend and frontend servers.
+### Development Mode
+
+#### Start Backend Server
+```bash
+cd backend
+npm run dev
+```
+The backend server will start on `http://localhost:3001`
+
+#### Start Frontend Server
+```bash
+cd frontend
+npm run dev
+```
+The frontend development server will start on `http://localhost:5174`
+
+### Production Mode
+
+#### Build and Start Backend
+```bash
+cd backend
+npm run build
+npm start
+```
+
+#### Build and Start Frontend
+```bash
+cd frontend
+npm run build
+npm run preview
+```
+Or serve the built files:
+```bash
+npx serve dist -p 3000
+```
+
+## 📚 API Documentation
+
+### Users Endpoints
+
+#### GET /users
+Get paginated list of users
+- **Query Parameters:**
+  - `pageNumber` (optional): Page number (default: 0)
+  - `pageSize` (optional): Items per page (default: 4)
+- **Response:** Array of user objects
+
+#### GET /users/count
+Get total count of users
+- **Response:** `{ count: number }`
+
+### Posts Endpoints
+
+#### GET /posts
+Get posts for a specific user
+- **Query Parameters:**
+  - `userId` (required): User ID to filter posts
+- **Response:** Array of post objects
+
+#### POST /posts
+Create a new post
+- **Request Body:**
+  ```json
+  {
+    "title": "Post Title",
+    "body": "Post content",
+    "userId": "user-uuid"
+  }
+  ```
+- **Response:** Created post object (201 status)
+
+#### DELETE /posts/:id
+Delete a post by ID
+- **Parameters:**
+  - `id`: Post ID to delete
+- **Response:** 204 No Content (success) or 404 Not Found
+
+## 🧪 Testing
+
+### Backend Tests
+```bash
+cd backend
+npm test
+```
+
+The test suite includes comprehensive tests for the DELETE endpoint functionality, including:
+- Successful post deletion
+- Error handling for non-existent posts
+- Input validation
+- Database state verification
+
+## 📁 Project Structure
+
+```
+├── backend/
+│   ├── src/
+│   │   ├── db/
+│   │   │   ├── connection.ts
+│   │   │   ├── users/
+│   │   │   │   ├── users.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── query-templates.ts
+│   │   │   └── posts/
+│   │   │       ├── posts.ts
+│   │   │       ├── types.ts
+│   │   │       └── query-tamplates.ts
+│   │   ├── routes/
+│   │   │   ├── users.ts
+│   │   │   └── posts.ts
+│   │   └── index.ts
+│   ├── config/
+│   ├── tests/
+│   │   ├── setup.ts
+│   │   └── posts.test.ts
+│   ├── package.json
+│   ├── jest.config.js
+│   └── tsconfig.json
+├── frontend/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── users.ts
+│   │   ├── components/
+│   │   │   ├── Breadcrumb.tsx
+│   │   │   ├── DeleteConfirmationModal.tsx
+│   │   │   ├── NewPostModal.tsx
+│   │   │   └── Paginations.tsx
+│   │   ├── pages/
+│   │   │   ├── Users/
+│   │   │   │   └── UsersPage.tsx
+│   │   │   └── Posts/
+│   │   │       └── PostsPage.tsx
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── tsconfig.json
+├── README.md
+└── .gitignore
+```
+
+## 🚀 Deployment
+
+### Local Production Deployment
+
+#### Backend
+```bash
+cd backend
+NODE_ENV=production npm run build
+NODE_ENV=production npm start
+```
+
+#### Frontend
+```bash
+cd frontend
+npm run build
+npx serve dist -p 3000
+```
+
+### Cloud Deployment
+
+The application can be deployed to cloud platforms like:
+- **Railway** (recommended for full-stack apps)
+- **Render**
+- **Vercel** (frontend) + Railway/Render (backend)
+- **Heroku**
+
+## 🤝 Usage
+
+1. **View Users**: Navigate to the users page to see paginated user list
+2. **View User Details**: Click on any user row to see their posts
+3. **Create Posts**: Use the "New Post" button to create posts for users
+4. **Delete Posts**: Click the trash icon on any post to delete it
+5. **Navigation**: Use the breadcrumb navigation to move between pages
+
+## 📝 Notes
+
+- The application uses sample data for demonstration
+- SQLite database is file-based and included in the repository
+- All API endpoints include proper error handling and validation
+- The frontend includes loading states and error boundaries
+- Unit tests ensure API reliability
+
+## 📞 Support
+
+For questions or issues, please refer to the code documentation or create an issue in the repository.
