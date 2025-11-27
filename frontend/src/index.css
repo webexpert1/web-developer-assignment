@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Global CSS for the loading dots animation */
 @keyframes pulse {
     0%, 80%, 100% {
       transform: scale(0);

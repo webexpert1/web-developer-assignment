@@ -111,6 +111,7 @@ The database and tables are automatically created when the backend server starts
 
 ### Development Mode
 
+
 #### Start Backend Server
 ```bash
 cd backend
@@ -268,22 +269,13 @@ npm run build
 npx serve dist -p 3000
 ```
 
-### Code Repository
-github - **https://github.com/webexpert1/web-developer-assignment**
-
-### Railway Deployment
-
-#### Important: Create Separate Projects
-
-Since you have both frontend and backend in the same repository, create **2 separate Railway projects**:
-
 #### Finding Your URLs
 
 **Backend URL:**
-- `https://web-developer-assignment-production.up.railway.app/users`
+- **https://web-developer-assignment-production.up.railway.app/users**
 
 **Frontend URL:**
-- `https://web-developer-assignment-five.vercel.app/`
+- **https://web-developer-assignment-five.vercel.app/**
 
 #### Database
 Railway automatically provides persistent SQLite storage that survives deployments.
