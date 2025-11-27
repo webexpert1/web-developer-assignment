@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { fetchUsers, fetchUsersCount, User } from '../../api/users';
 import Pagination from '../../components/Paginations';
+import LoadingDots from '../../components/LoadingDots';
 
 /**
  * @typedef {object} User
@@ -96,7 +97,7 @@ export default function UsersPage() {
 
       {usersLoading ? (
         <div className="text-center py-8">
-          <p>Loading users...</p>
+          <LoadingDots /> 
         </div>
       ) : (
         <>
