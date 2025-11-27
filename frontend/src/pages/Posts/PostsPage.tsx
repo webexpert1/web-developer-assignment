@@ -7,6 +7,8 @@ import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import { deletePost as deletePostApi } from '../../api/users';
 import { User } from '../../api/users';
 import Breadcrumb from '../../components/Breadcrumb';
+import LoadingDots from '../../components/LoadingDots';
+import { API_ENDPOINTS } from '../../config/api';
 
 /**
  * @typedef {object} Post
@@ -30,7 +32,7 @@ interface Post {
  * @returns {Promise<Post[]>} A promise that resolves to an array of posts.
  */
 const fetchPosts = async (userId: string): Promise<Post[]> => {
-  const response = await fetch(`http://localhost:3001/posts?userId=${userId}`);
+  const response = await fetch(`${API_ENDPOINTS.POSTS}?userId=${userId}`);
   if (!response.ok) {
     throw new Error('Failed to fetch posts');
   }
@@ -150,7 +152,7 @@ export default function PostsPage() {
 
       {isLoading ? (
         <div className="text-center py-8">
-          <p>Loading posts...</p>
+          <LoadingDots /> 
         </div>
       ) : posts.length === 0 ? (
         <div className="text-center py-8">

@@ -125,8 +125,10 @@ export default function UsersPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {user.name}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {user.email}
+                    <td className="px-6 py-4 text-sm text-gray-500">
+                      <div className="truncate max-w-xs" style={{ maxWidth: '192px' }} title={user.email}>
+                        {user.email}
+                      </div>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-500 w-96">
                       <div className="truncate" style={{ maxWidth: '392px' }}>

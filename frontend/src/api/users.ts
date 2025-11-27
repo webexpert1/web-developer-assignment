@@ -1,3 +1,5 @@
+import { API_ENDPOINTS, API_CONFIG } from '../config/api';
+
 /**
  * @typedef {object} User
  * @property {string} id - The unique identifier of the user.
@@ -31,7 +33,7 @@ export interface User {
  * @throws {Error} If the network response is not OK.
  */
 export const fetchUsers = async (pageNumber: number, pageSize: number): Promise<User[]> => {
-  const response = await fetch(`http://localhost:3001/users?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+  const response = await fetch(`${API_ENDPOINTS.USERS}?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   if (!response.ok) {
     throw new Error('Failed to fetch users');
   }
@@ -46,7 +48,7 @@ export const fetchUsers = async (pageNumber: number, pageSize: number): Promise<
  * @throws {Error} If the network response is not OK.
  */
 export const fetchUsersCount = async (): Promise<{ count: number }> => {
-  const response = await fetch('http://localhost:3001/users/count');
+  const response = await fetch(API_ENDPOINTS.USERS_COUNT);
   if (!response.ok) {
     throw new Error('Failed to fetch users count');
   }
@@ -64,11 +66,9 @@ export const fetchUsersCount = async (): Promise<{ count: number }> => {
  * @throws {Error} If the network response is not OK.
  */
 export const createPost = async (userId: string, title: string, body: string) => {
-  const response = await fetch('http://localhost:3001/posts', {
+  const response = await fetch(API_ENDPOINTS.POSTS, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: API_CONFIG.headers,
     body: JSON.stringify({ userId, title, body }),
   });
 
@@ -87,7 +87,7 @@ export const createPost = async (userId: string, title: string, body: string) =>
  * @throws {Error} If the network response is not OK.
  */
 export const deletePost = async (postId: string) => {
-  const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+  const response = await fetch(API_ENDPOINTS.POST_BY_ID(postId), {
     method: 'DELETE',
   });
 
