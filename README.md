@@ -62,8 +62,8 @@ A full-stack web application for managing users and their posts, built with Reac
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
-cd test-frontend-web-developer-assignment-Public
+git clone https://github.com/webexpert1/web-developer-assignment
+cd web-developer-assignment
 ```
 
 ### 2. Install Backend Dependencies
@@ -138,7 +138,7 @@ npm start
 ```bash
 cd frontend
 npm run build
-npm run preview
+npm run dev
 ```
 Or serve the built files:
 ```bash
@@ -268,13 +268,14 @@ npm run build
 npx serve dist -p 3000
 ```
 
+### Code Repository
+github - **https://github.com/webexpert1/web-developer-assignment**
+
 ### Cloud Deployment
 
-The application can be deployed to cloud platforms like:
-- **Railway** (recommended for full-stack apps)
-- **Render**
-- **Vercel** (frontend) + Railway/Render (backend)
-- **Heroku**
+backend - **web-developer-assignment-production.up.railway.app**
+frontend - **https://web-developer-assignment-five.vercel.app/** */
+
 
 ## 🤝 Usage
 
