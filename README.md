@@ -58,6 +58,14 @@ A full-stack web application for managing users and their posts, built with Reac
 - **npm** or **yarn**
 - **Git**
 
+#### Deployed Urls
+
+**Backend URL:**
+- **https://web-developer-assignment-production.up.railway.app/users**
+
+**Frontend URL:**
+- **https://web-developer-assignment-five.vercel.app/**
+
 ## 🚀 Installation
 
 ### 1. Clone the Repository
@@ -268,14 +276,6 @@ cd frontend
 npm run build
 npx serve dist -p 3000
 ```
-
-#### Finding Your URLs
-
-**Backend URL:**
-- **https://web-developer-assignment-production.up.railway.app/users**
-
-**Frontend URL:**
-- **https://web-developer-assignment-five.vercel.app/**
 
 #### Database
 Railway automatically provides persistent SQLite storage that survives deployments.
